@@ -1,0 +1,9 @@
+eunaumtenhoid_payments_webhook:
+    path: /payments/webhook/{provider_name}
+    defaults: { _controller: eunaumtenhoid.payments.controller.webhook:handle }
+    methods: [POST, GET]
+
+eunaumtenhoid_payments_test:
+    path: /payments/test/{provider_name}
+    defaults: { _controller: eunaumtenhoid.payments.controller.test:handle }
+    methods: [GET]

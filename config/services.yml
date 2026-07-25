@@ -1,0 +1,66 @@
+services:
+    # Event Listener
+    eunaumtenhoid.payments.listener:
+        class: eunaumtenhoid\payments\event\listener
+        arguments:
+            - '@template'
+        tags:
+            - { name: event.subscriber }
+
+    # Controller de Testes
+    eunaumtenhoid.payments.controller.test:
+        class: eunaumtenhoid\payments\controller\test
+        arguments:
+            - '@template'
+            - '@eunaumtenhoid.payments.manager'
+
+    # Gerenciador Principal
+    eunaumtenhoid.payments.manager:
+        class: eunaumtenhoid\payments\payment\manager
+        arguments:
+            - '@config'
+            - '@language'
+        calls:
+            - [register_provider, ['@eunaumtenhoid.payments.provider.mercadopago']]
+            - [register_provider, ['@eunaumtenhoid.payments.provider.stripe']]
+            - [register_provider, ['@eunaumtenhoid.payments.provider.paypal']]
+            - [register_provider, ['@eunaumtenhoid.payments.provider.coinbase']]
+            - [register_provider, ['@eunaumtenhoid.payments.provider.btcpay']]
+            - [register_provider, ['@eunaumtenhoid.payments.provider.coinpayments']]
+
+    # Provedores
+    eunaumtenhoid.payments.provider.mercadopago:
+        class: eunaumtenhoid\payments\payment\providers\mercadopago
+        arguments:
+            - '@config'
+            - '@language'
+
+    eunaumtenhoid.payments.provider.stripe:
+        class: eunaumtenhoid\payments\payment\providers\stripe
+        arguments:
+            - '@config'
+            - '@language'
+
+    eunaumtenhoid.payments.provider.paypal:
+        class: eunaumtenhoid\payments\payment\providers\paypal
+        arguments:
+            - '@config'
+            - '@language'
+
+    eunaumtenhoid.payments.provider.coinbase:
+        class: eunaumtenhoid\payments\payment\providers\coinbase
+        arguments:
+            - '@config'
+            - '@language'
+
+    eunaumtenhoid.payments.provider.btcpay:
+        class: eunaumtenhoid\payments\payment\providers\btcpay
+        arguments:
+            - '@config'
+            - '@language'
+
+    eunaumtenhoid.payments.provider.coinpayments:
+        class: eunaumtenhoid\payments\payment\providers\coinpayments
+        arguments:
+            - '@config'
+            - '@language'

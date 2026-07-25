@@ -1,0 +1,134 @@
+<!-- INCLUDE overall_header.html -->
+
+<a id="maincontent"></a>
+
+<h1>{{ lang('ACP_EUNAUMTENHOID_PAYMENTS_SETTINGS') }}</h1>
+
+<p>{{ lang('ACP_EUNAUMTENHOID_PAYMENTS_SETTINGS_EXPLAIN') }}</p>
+
+<form id="acp_payments" method="post" action="{U_ACTION}">
+    <fieldset>
+        <legend>{{ lang('MERCADOPAGO') }}</legend>
+        <dl>
+            <dt><label>{{ lang('ENABLE_GATEWAY') }}:</label></dt>
+            <dd>
+                <label><input type="radio" name="mercadopago_enabled" value="1" <!-- IF MERCADOPAGO_ENABLED -->checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label>
+                <label><input type="radio" name="mercadopago_enabled" value="0" <!-- IF not MERCADOPAGO_ENABLED -->checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="mercadopago_public_key">{{ lang('MERCADOPAGO_PUBLIC_KEY') }}:</label></dt>
+            <dd><input type="text" id="mercadopago_public_key" name="mercadopago_public_key" value="{MERCADOPAGO_PUBLIC_KEY}" size="40" /></dd>
+        </dl>
+        <dl>
+            <dt><label for="mercadopago_token">{{ lang('MERCADOPAGO_TOKEN') }}:</label><br /><span>{{ lang('MERCADOPAGO_TOKEN_EXPLAIN') }}</span></dt>
+            <dd><input type="text" id="mercadopago_token" name="mercadopago_token" value="{MERCADOPAGO_TOKEN}" size="40" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>{{ lang('STRIPE') }}</legend>
+        <dl>
+            <dt><label>{{ lang('ENABLE_GATEWAY') }}:</label></dt>
+            <dd>
+                <label><input type="radio" name="stripe_enabled" value="1" <!-- IF STRIPE_ENABLED -->checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label>
+                <label><input type="radio" name="stripe_enabled" value="0" <!-- IF not STRIPE_ENABLED -->checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="stripe_key">{{ lang('STRIPE_KEY') }}:</label></dt>
+            <dd><input type="text" id="stripe_key" name="stripe_key" value="{STRIPE_KEY}" size="40" /></dd>
+        </dl>
+        <dl>
+            <dt><label for="stripe_secret">{{ lang('STRIPE_SECRET') }}:</label></dt>
+            <dd><input type="password" id="stripe_secret" name="stripe_secret" value="{STRIPE_SECRET}" size="40" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>{{ lang('PAYPAL') }}</legend>
+        <dl>
+            <dt><label>{{ lang('ENABLE_GATEWAY') }}:</label></dt>
+            <dd>
+                <label><input type="radio" name="paypal_enabled" value="1" <!-- IF PAYPAL_ENABLED -->checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label>
+                <label><input type="radio" name="paypal_enabled" value="0" <!-- IF not PAYPAL_ENABLED -->checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="paypal_client">{{ lang('PAYPAL_CLIENT') }}:</label></dt>
+            <dd><input type="text" id="paypal_client" name="paypal_client" value="{PAYPAL_CLIENT}" size="40" /></dd>
+        </dl>
+        <dl>
+            <dt><label for="paypal_secret">{{ lang('PAYPAL_SECRET') }}:</label></dt>
+            <dd><input type="password" id="paypal_secret" name="paypal_secret" value="{PAYPAL_SECRET}" size="40" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>{{ lang('COINBASE') }}</legend>
+        <dl>
+            <dt><label>{{ lang('ENABLE_GATEWAY') }}:</label></dt>
+            <dd>
+                <label><input type="radio" name="coinbase_enabled" value="1" <!-- IF COINBASE_ENABLED -->checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label>
+                <label><input type="radio" name="coinbase_enabled" value="0" <!-- IF not COINBASE_ENABLED -->checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="coinbase_key">{{ lang('COINBASE_KEY') }}:</label></dt>
+            <dd><input type="text" id="coinbase_key" name="coinbase_key" value="{COINBASE_KEY}" size="40" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>Configurações do BTCPay Server</legend>
+        <dl>
+            <dt><label for="btcpay_enabled">Habilitar BTCPay Server:</label></dt>
+            <dd>
+                <label><input type="radio" class="radio" name="btcpay_enabled" value="1"<!-- IF BTCPAY_ENABLED --> id="btcpay_enabled" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+                <label><input type="radio" class="radio" name="btcpay_enabled" value="0"<!-- IF not BTCPAY_ENABLED --> id="btcpay_enabled" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="btcpay_url">URL do Servidor (ex: https://btcpay.seusite.com):</label></dt>
+            <dd><input type="text" id="btcpay_url" name="btcpay_url" size="40" value="{BTCPAY_URL}" /></dd>
+        </dl>
+        <dl>
+            <dt><label for="btcpay_store_id">Store ID (ID da Loja):</label></dt>
+            <dd><input type="text" id="btcpay_store_id" name="btcpay_store_id" size="40" value="{BTCPAY_STORE_ID}" /></dd>
+        </dl>
+        <dl>
+            <dt><label for="btcpay_api_key">API Key (Chave da API):</label></dt>
+            <dd><input type="text" id="btcpay_api_key" name="btcpay_api_key" size="40" value="{BTCPAY_API_KEY}" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>Configurações do CoinPayments</legend>
+        <dl>
+            <dt><label for="coinpayments_enabled">Habilitar CoinPayments:</label></dt>
+            <dd>
+                <label><input type="radio" class="radio" name="coinpayments_enabled" value="1"<!-- IF COINPAYMENTS_ENABLED --> id="coinpayments_enabled" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+                <label><input type="radio" class="radio" name="coinpayments_enabled" value="0"<!-- IF not COINPAYMENTS_ENABLED --> id="coinpayments_enabled" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="coinpayments_pub_key">Public Key (Chave Pública):</label></dt>
+            <dd><input type="text" id="coinpayments_pub_key" name="coinpayments_pub_key" size="40" value="{COINPAYMENTS_PUB_KEY}" /></dd>
+        </dl>
+        <dl>
+            <dt><label for="coinpayments_priv_key">Private Key (Chave Privada):</label></dt>
+            <dd><input type="password" id="coinpayments_priv_key" name="coinpayments_priv_key" size="40" value="{COINPAYMENTS_PRIV_KEY}" /></dd>
+        </dl>
+        <dl>
+            <dt><label for="coinpayments_default_coin">Criptomoeda Inicial Padrão (Ex: BTC, LTC):</label><br><span>A moeda que aparecerá selecionada ao abrir o checkout.</span></dt>
+            <dd><input type="text" id="coinpayments_default_coin" name="coinpayments_default_coin" size="20" value="{COINPAYMENTS_DEFAULT_COIN}" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset class="submit-buttons">
+        <input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />
+        {S_FORM_TOKEN}
+    </fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->
