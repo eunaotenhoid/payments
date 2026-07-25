@@ -1,6 +1,6 @@
-# Central Payments Engine for phpBB
+# Payments Engine for phpBB
 
-Central Payments is a powerful and robust payments engine for your phpBB 3.3+ community. It acts as a centralized hub for API keys and communication logic with various banks and crypto gateways. 
+Payments Engine is a powerful and robust payments engine for your phpBB 3.3+ community. It acts as a centralized hub for API keys and communication logic with various banks and crypto gateways. 
 
 If you are building (or using) an extension that needs to charge users (e.g., Donations, Marketplaces, VIP Systems), this extension handles all the heavy lifting of generating checkout links and verifying payments!
 
