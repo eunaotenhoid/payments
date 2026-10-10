@@ -35,6 +35,23 @@ class install extends \phpbb\db\migration\migration
                         'tx_id' => ['INDEX', 'transaction_id'],
                     ],
                 ],
+                $this->table_prefix . 'eunaumtenhoid_payments_intents' => [
+                    'COLUMNS' => [
+                        'intent_id'          => ['VCHAR:64', ''],
+                        'amount'             => ['INT:11', 0],
+                        'currency'           => ['VCHAR:3', 'BRL'],
+                        'description'        => ['VCHAR:255', ''],
+                        'return_url'         => ['VCHAR:255', ''],
+                        'return_text'        => ['VCHAR:100', ''],
+                        'step1_title'        => ['VCHAR:100', ''],
+                        'reward_info'        => ['VCHAR:255', ''],
+                        'success_msg'        => ['TEXT', ''],
+                        'cancel_msg'         => ['TEXT', ''],
+                        'allowed_gateways'   => ['TEXT', ''],
+                        'created_at'         => ['INT:11', 0],
+                    ],
+                    'PRIMARY_KEY' => 'intent_id',
+                ],
             ],
         ];
     }
@@ -47,6 +64,7 @@ class install extends \phpbb\db\migration\migration
         return [
             'drop_tables' => [
                 $this->table_prefix . 'payments_transactions',
+                $this->table_prefix . 'eunaumtenhoid_payments_intents',
             ],
         ];
     }
