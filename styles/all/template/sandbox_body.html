@@ -1,0 +1,49 @@
+<!-- INCLUDE overall_header.html -->
+
+<h2 class="solo">Sandbox de Pagamentos</h2>
+
+<div class="panel">
+    <div class="inner">
+        <p>Esta é uma ferramenta para testar as integrações ativadas. Selecione o gateway e o valor para ser redirecionado para a tela real de checkout.</p>
+
+        <!-- IF SANDBOX_ERROR -->
+            <div class="errorbox">
+                <p><strong>Erro:</strong> {SANDBOX_ERROR}</p>
+            </div>
+        <!-- ENDIF -->
+
+        <!-- IF SANDBOX_SUCCESS -->
+            <div class="successbox" style="background-color: #dff0d8; color: #3c763d; border: 1px solid #d6e9c6; padding: 10px; margin-bottom: 15px;">
+                <p><strong>Retorno:</strong> {SANDBOX_SUCCESS}</p>
+            </div>
+        <!-- ENDIF -->
+
+        <form method="post" action="{U_ACTION}">
+            <fieldset>
+                <dl>
+                    <dt><label for="provider">Selecione o Gateway:</label></dt>
+                    <dd>
+                        <select name="provider" id="provider">
+                            <!-- BEGIN providers -->
+                                <option value="{providers.ID}">{providers.NAME}</option>
+                            <!-- BEGINELSE -->
+                                <option value="">Nenhum gateway ativado no ACP.</option>
+                            <!-- END providers -->
+                        </select>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><label for="amount">Valor do Teste (em centavos):</label><br><span>Ex: 5000 = R$ 50,00</span></dt>
+                    <dd><input type="number" name="amount" id="amount" value="5000" size="10" /></dd>
+                </dl>
+            </fieldset>
+
+            <fieldset class="submit-buttons">
+                <input type="submit" name="submit_direct" value="Testar Pulo Direto (Antigo)" class="button2" />
+                <input type="submit" name="submit_intent" value="Testar Tela Centralizada (Nova)" class="button1" />
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<!-- INCLUDE overall_footer.html -->

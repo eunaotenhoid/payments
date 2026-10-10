@@ -37,4 +37,11 @@ $lang = array_merge($lang, [
     'ACP_EUNAUMTENHOID_PAYMENTS_BTCPAY_MISSING_CONFIG' => 'BTCPay Server settings (URL, Store ID or API Key) are missing in ACP.',
     'ACP_EUNAUMTENHOID_PAYMENTS_BTCPAY_ERROR'          => 'Error processing BTCPay Server',
     'ACP_EUNAUMTENHOID_PAYMENTS_SAVED_SUCCESSFULLY'    => 'Settings saved successfully.',
+    
+    // Checkout
+    'PAYMENTS_RETURN_TO'       => 'Complete and Return to %s',
+    'PAYMENTS_RETURN_DEFAULT'  => 'Complete and Return',
+
+    // Logs
+    'LOG_PAYMENTS_ERROR' => '<strong>Payments API Error (%1$s)</strong><br />» %2$s',
 ]);

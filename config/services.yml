@@ -13,6 +13,30 @@ services:
         arguments:
             - '@template'
             - '@eunaumtenhoid.payments.manager'
+            - '@user'
+            - '@auth'
+
+    # Controller do Sandbox
+    eunaumtenhoid.payments.controller.sandbox:
+        class: eunaumtenhoid\payments\controller\sandbox
+        arguments:
+            - '@template'
+            - '@eunaumtenhoid.payments.manager'
+            - '@request'
+            - '@controller.helper'
+            - '@user'
+            - '@auth'
+
+    # Controller do Checkout Central
+    eunaumtenhoid.payments.controller.checkout:
+        class: eunaumtenhoid\payments\controller\checkout
+        arguments:
+            - '@template'
+            - '@eunaumtenhoid.payments.manager'
+            - '@request'
+            - '@controller.helper'
+            - '@dispatcher'
+            - '@language'
 
     # Gerenciador Principal
     eunaumtenhoid.payments.manager:
@@ -20,6 +44,9 @@ services:
         arguments:
             - '@config'
             - '@language'
+            - '@log'
+            - '@user'
+            - '@dbal.conn'
         calls:
             - [register_provider, ['@eunaumtenhoid.payments.provider.mercadopago']]
             - [register_provider, ['@eunaumtenhoid.payments.provider.stripe']]

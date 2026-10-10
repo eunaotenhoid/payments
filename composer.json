@@ -9,7 +9,9 @@
     "authors": [
         {
             "name": "eunaumtenhoid",
-            "role": "Developer"
+            "role": "Developer",
+            "email": "eunaumtenhoid@outlook.com",
+            "homepage": "https://github.com/eunaotenhoid"
         }
     ],
     "require": {
@@ -21,7 +23,7 @@
         "guzzlehttp/guzzle": "^7.13"
     },
     "extra": {
-        "display-name": "Payments Gateway",
+        "display-name": "Payments Engine",
         "soft-require": {
             "phpbb/phpbb": ">=3.3.0"
         }

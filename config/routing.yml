@@ -7,3 +7,18 @@ eunaumtenhoid_payments_test:
     path: /payments/test/{provider_name}
     defaults: { _controller: eunaumtenhoid.payments.controller.test:handle }
     methods: [GET]
+
+eunaumtenhoid_payments_sandbox:
+    path: /payments/sandbox
+    defaults: { _controller: eunaumtenhoid.payments.controller.sandbox:handle }
+    methods: [GET, POST]
+
+eunaumtenhoid_payments_checkout:
+    path: /payments/checkout/{intent_id}
+    defaults: { _controller: eunaumtenhoid.payments.controller.checkout:handle }
+    methods: [GET, POST]
+
+eunaumtenhoid_payments_completed:
+    path: /payments/completed/{intent_id}
+    defaults: { _controller: eunaumtenhoid.payments.controller.checkout:completed }
+    methods: [GET]

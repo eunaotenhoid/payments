@@ -18,14 +18,26 @@ class test
     /** @var manager */
     protected $payment_manager;
 
-    public function __construct(\phpbb\template\template $template, manager $payment_manager)
+    /** @var \phpbb\user */
+    protected $user;
+
+    /** @var \phpbb\auth\auth */
+    protected $auth;
+
+    public function __construct(\phpbb\template\template $template, manager $payment_manager, \phpbb\user $user, \phpbb\auth\auth $auth)
     {
         $this->template = $template;
         $this->payment_manager = $payment_manager;
+        $this->user = $user;
+        $this->auth = $auth;
     }
 
     public function handle($provider_name)
     {
+        if (!$this->auth->acl_get('a_')) {
+            trigger_error('Acesso negado. Apenas administradores podem executar testes de API.');
+        }
+
         try {
             // Verifica se o provedor está habilitado e configurado
             $provider = $this->payment_manager->get_provider($provider_name);

@@ -1,6 +1,6 @@
-# Payments Engine for phpBB
+# Central Payments Engine for phpBB
 
-Payments Engine is a powerful and robust payments engine for your phpBB 3.3+ community. It acts as a centralized hub for API keys and communication logic with various banks and crypto gateways. 
+Central Payments is a powerful and robust payments engine for your phpBB 3.3+ community. It acts as a centralized hub for API keys and communication logic with various banks and crypto gateways. 
 
 If you are building (or using) an extension that needs to charge users (e.g., Donations, Marketplaces, VIP Systems), this extension handles all the heavy lifting of generating checkout links and verifying payments!
 
@@ -32,12 +32,12 @@ If you are building (or using) an extension that needs to charge users (e.g., Do
 2. Create the following directory path: `ext/eunaumtenhoid/payments`.
 3. Copy the extension files into that directory.
 4. Go to your phpBB Administration Control Panel (ACP) > **Customise** > **Manage extensions**.
-5. Locate **Payments Engine** under the disabled extensions list and click **Enable**.
+5. Locate **Central Payments** under the disabled extensions list and click **Enable**.
 6. Once enabled, go to the **Extensions** tab to configure your gateways API keys.
 
 ## For Developers
 
-Payments Engine is designed to be extensible and used by other extensions. Check the `DEVELOPERS.en.md` file in the extension folder to learn how to integrate this payment engine into your own phpBB extensions!
+Central Payments is designed to be extensible and used by other extensions. Check the `DEVELOPERS.en.md` file in the extension folder to learn how to integrate this payment engine into your own phpBB extensions!
 
 ## License
 

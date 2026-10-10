@@ -1,0 +1,240 @@
+<!-- INCLUDE overall_header.html -->
+
+<style>
+/* Estilo Prosilver para Tela de Conclusão / Sucesso */
+.checkout-completed-container {
+    max-width: 550px;
+    margin: 30px auto;
+    background: #f9f9f9;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Barra de Passos (Progress Bar) */
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #cccccc;
+    position: relative;
+}
+
+.checkout-steps::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    left: 45px;
+    right: 45px;
+    height: 3px;
+    background: #cccccc;
+    z-index: 1;
+}
+
+.step-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.step-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #cccccc;
+    color: #666666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.step-item.completed .step-circle {
+    border-color: #228822;
+    background: #228822;
+    color: #fff;
+}
+
+.step-item.active .step-circle {
+    border-color: #12A3EB;
+    background: #12A3EB;
+    color: #fff;
+}
+
+.step-label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #666666;
+    text-transform: uppercase;
+}
+
+.step-item.active .step-label {
+    color: #12A3EB;
+}
+
+.completed-body {
+    padding: 30px 25px;
+    text-align: center;
+}
+
+.completed-icon-success {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #e8f5e9;
+    color: #228822;
+    font-size: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 2px solid #228822;
+}
+
+.completed-icon-failed {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #ffebee;
+    color: #cc0000;
+    font-size: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 2px solid #cc0000;
+}
+
+.completed-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0 0 10px 0;
+}
+
+.completed-desc {
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.completed-summary {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 13px;
+    color: #555555;
+    border-bottom: 1px dashed #efefef;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+    font-weight: bold;
+    font-size: 15px;
+    color: #222222;
+    padding-top: 10px;
+}
+
+.btn-return {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 15px;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+</style>
+
+<div class="checkout-completed-container">
+    <!-- Barra de Passos -->
+    <div class="checkout-steps">
+        <div class="step-item completed">
+            <div class="step-circle">✓</div>
+            <div class="step-label">{STEP1_LABEL}</div>
+        </div>
+        <div class="step-item completed">
+            <div class="step-circle">✓</div>
+            <div class="step-label">Pagamento</div>
+        </div>
+        <div class="step-item active">
+            <div class="step-circle">3</div>
+            <div class="step-label">Conclusão</div>
+        </div>
+    </div>
+
+    <div class="completed-body">
+        <!-- IF IS_SUCCESS -->
+            <div class="completed-icon-success">
+                <i class="icon fa-check fa-fw" aria-hidden="true"></i>
+            </div>
+            <h2 class="completed-title">Pagamento Confirmado!</h2>
+            <p class="completed-desc">
+                <!-- IF CUSTOM_MSG -->
+                    {CUSTOM_MSG}
+                <!-- ELSE -->
+                    Sua transação foi processada e aprovada com sucesso.
+                <!-- ENDIF -->
+            </p>
+
+            <div class="completed-summary">
+                <div class="summary-row">
+                    <span>Descrição:</span>
+                    <span>{INTENT_DESCRIPTION}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Status:</span>
+                    <span style="color: #228822; font-weight: bold;">Aprovado</span>
+                </div>
+                <div class="summary-row">
+                    <span>Total Pago:</span>
+                    <span>{INTENT_CURRENCY} {INTENT_AMOUNT}</span>
+                </div>
+            </div>
+
+            <a href="{U_RETURN_URL}" class="btn-return button1">
+                {RETURN_LABEL} &raquo;
+            </a>
+        <!-- ELSE -->
+            <div class="completed-icon-failed">
+                <i class="icon fa-times fa-fw" aria-hidden="true"></i>
+            </div>
+            <h2 class="completed-title">Pagamento Não Concluído</h2>
+            <p class="completed-desc">
+                <!-- IF CUSTOM_MSG -->
+                    {CUSTOM_MSG}
+                <!-- ELSE -->
+                    A transação foi cancelada ou não pôde ser aprovada pela instituição.
+                <!-- ENDIF -->
+            </p>
+
+            <a href="{U_RETURN_URL}" class="btn-return button2">
+                {RETURN_LABEL} &raquo;
+            </a>
+        <!-- ENDIF -->
+    </div>
+</div>
+
+<!-- INCLUDE overall_footer.html -->
