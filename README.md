@@ -35,9 +35,10 @@ If you are building (or using) an extension that needs to charge users (e.g., Do
 5. Locate **Central Payments** under the disabled extensions list and click **Enable**.
 6. Once enabled, go to the **Extensions** tab to configure your gateways API keys.
 
-## For Developers
+## Documentation & Configuration
 
-Central Payments is designed to be extensible and used by other extensions. Check the `DEVELOPERS.en.md` file in the extension folder to learn how to integrate this payment engine into your own phpBB extensions!
+- **User & Configuration Guide**: See [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md) for step-by-step instructions on obtaining API credentials and configuring each gateway.
+- **For Developers**: Check [`docs/DEVELOPERS.md`](docs/DEVELOPERS.md) (or [`docs/DEVELOPERS.en.md`](docs/DEVELOPERS.en.md)) to learn how to integrate this central payment engine into your own phpBB extensions.
 
 ## License
 

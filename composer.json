@@ -1,10 +1,10 @@
 {
     "name": "eunaumtenhoid/payments",
     "type": "phpbb-extension",
-    "description": "Gateway central de pagamentos para o fórum, suportando Mercado Pago, Stripe, PayPal e Coinbase.",
+    "description": "Central payment gateway for phpBB forums, supporting Mercado Pago, Stripe, PayPal, Coinbase, and CoinPayments.",
     "homepage": "https://github.com/eunaumtenhoid/payments",
-    "version": "1.0.0",
-    "time": "2026-07-04",
+    "version": "1.1.0",
+    "time": "2026-10-11",
     "license": "GPL-2.0-only",
     "authors": [
         {

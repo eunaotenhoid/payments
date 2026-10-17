@@ -80,48 +80,44 @@
     </fieldset>
 
     <fieldset>
-        <legend>Configurações do BTCPay Server</legend>
+        <legend>{{ lang('BTCPAY') }}</legend>
         <dl>
-            <dt><label for="btcpay_enabled">Habilitar BTCPay Server:</label></dt>
+            <dt><label for="btcpay_enabled">{{ lang('ENABLE_GATEWAY') }}:</label></dt>
             <dd>
-                <label><input type="radio" class="radio" name="btcpay_enabled" value="1"<!-- IF BTCPAY_ENABLED --> id="btcpay_enabled" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
-                <label><input type="radio" class="radio" name="btcpay_enabled" value="0"<!-- IF not BTCPAY_ENABLED --> id="btcpay_enabled" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+                <label><input type="radio" class="radio" name="btcpay_enabled" value="1"<!-- IF BTCPAY_ENABLED --> id="btcpay_enabled" checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label>
+                <label><input type="radio" class="radio" name="btcpay_enabled" value="0"<!-- IF not BTCPAY_ENABLED --> id="btcpay_enabled" checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
             </dd>
         </dl>
         <dl>
-            <dt><label for="btcpay_url">URL do Servidor (ex: https://btcpay.seusite.com):</label></dt>
+            <dt><label for="btcpay_url">{{ lang('BTCPAY_URL') }}:</label><br /><span>{{ lang('BTCPAY_URL_EXPLAIN') }}</span></dt>
             <dd><input type="text" id="btcpay_url" name="btcpay_url" size="40" value="{BTCPAY_URL}" /></dd>
         </dl>
         <dl>
-            <dt><label for="btcpay_store_id">Store ID (ID da Loja):</label></dt>
+            <dt><label for="btcpay_store_id">{{ lang('BTCPAY_STORE_ID') }}:</label></dt>
             <dd><input type="text" id="btcpay_store_id" name="btcpay_store_id" size="40" value="{BTCPAY_STORE_ID}" /></dd>
         </dl>
         <dl>
-            <dt><label for="btcpay_api_key">API Key (Chave da API):</label></dt>
-            <dd><input type="text" id="btcpay_api_key" name="btcpay_api_key" size="40" value="{BTCPAY_API_KEY}" /></dd>
+            <dt><label for="btcpay_api_key">{{ lang('BTCPAY_API_KEY') }}:</label></dt>
+            <dd><input type="password" id="btcpay_api_key" name="btcpay_api_key" size="40" value="{BTCPAY_API_KEY}" /></dd>
         </dl>
     </fieldset>
 
     <fieldset>
-        <legend>Configurações do CoinPayments</legend>
+        <legend>{{ lang('COINPAYMENTS') }}</legend>
         <dl>
-            <dt><label for="coinpayments_enabled">Habilitar CoinPayments:</label></dt>
+            <dt><label for="coinpayments_enabled">{{ lang('ENABLE_GATEWAY') }}:</label></dt>
             <dd>
-                <label><input type="radio" class="radio" name="coinpayments_enabled" value="1"<!-- IF COINPAYMENTS_ENABLED --> id="coinpayments_enabled" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
-                <label><input type="radio" class="radio" name="coinpayments_enabled" value="0"<!-- IF not COINPAYMENTS_ENABLED --> id="coinpayments_enabled" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+                <label><input type="radio" class="radio" name="coinpayments_enabled" value="1"<!-- IF COINPAYMENTS_ENABLED --> id="coinpayments_enabled" checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label>
+                <label><input type="radio" class="radio" name="coinpayments_enabled" value="0"<!-- IF not COINPAYMENTS_ENABLED --> id="coinpayments_enabled" checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
             </dd>
         </dl>
         <dl>
-            <dt><label for="coinpayments_pub_key">Public Key (Chave Pública):</label></dt>
-            <dd><input type="text" id="coinpayments_pub_key" name="coinpayments_pub_key" size="40" value="{COINPAYMENTS_PUB_KEY}" /></dd>
+            <dt><label for="coinpayments_client_id">{{ lang('COINPAYMENTS_CLIENT_ID') }}:</label><br /><span>{{ lang('COINPAYMENTS_CLIENT_ID_EXPLAIN') }}</span></dt>
+            <dd><input type="text" id="coinpayments_client_id" name="coinpayments_client_id" size="40" value="{COINPAYMENTS_CLIENT_ID}" /></dd>
         </dl>
         <dl>
-            <dt><label for="coinpayments_priv_key">Private Key (Chave Privada):</label></dt>
-            <dd><input type="password" id="coinpayments_priv_key" name="coinpayments_priv_key" size="40" value="{COINPAYMENTS_PRIV_KEY}" /></dd>
-        </dl>
-        <dl>
-            <dt><label for="coinpayments_default_coin">Criptomoeda Inicial Padrão (Ex: BTC, LTC):</label><br><span>A moeda que aparecerá selecionada ao abrir o checkout.</span></dt>
-            <dd><input type="text" id="coinpayments_default_coin" name="coinpayments_default_coin" size="20" value="{COINPAYMENTS_DEFAULT_COIN}" /></dd>
+            <dt><label for="coinpayments_client_secret">{{ lang('COINPAYMENTS_CLIENT_SECRET') }}:</label><br /><span>{{ lang('COINPAYMENTS_CLIENT_SECRET_EXPLAIN') }}</span></dt>
+            <dd><input type="password" id="coinpayments_client_secret" name="coinpayments_client_secret" size="40" value="{COINPAYMENTS_CLIENT_SECRET}" /></dd>
         </dl>
     </fieldset>
 

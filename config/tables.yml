@@ -1,0 +1,3 @@
+parameters:
+    eunaumtenhoid.payments.tables.payments_transactions: '%core.table_prefix%payments_transactions'
+    eunaumtenhoid.payments.tables.payments_intents: '%core.table_prefix%payments_intents'

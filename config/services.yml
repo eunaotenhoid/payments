@@ -1,3 +1,6 @@
+imports:
+    - { resource: tables.yml }
+
 services:
     # Event Listener
     eunaumtenhoid.payments.listener:
@@ -37,6 +40,8 @@ services:
             - '@controller.helper'
             - '@dispatcher'
             - '@language'
+            - '@user'
+            - '@config'
 
     # Gerenciador Principal
     eunaumtenhoid.payments.manager:
@@ -47,6 +52,8 @@ services:
             - '@log'
             - '@user'
             - '@dbal.conn'
+            - '%eunaumtenhoid.payments.tables.payments_intents%'
+            - '%eunaumtenhoid.payments.tables.payments_transactions%'
         calls:
             - [register_provider, ['@eunaumtenhoid.payments.provider.mercadopago']]
             - [register_provider, ['@eunaumtenhoid.payments.provider.stripe']]
@@ -91,3 +98,4 @@ services:
         arguments:
             - '@config'
             - '@language'
+            - '@user'

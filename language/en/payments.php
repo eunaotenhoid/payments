@@ -37,4 +37,16 @@ $lang = array_merge($lang, [
     
     'COINBASE'                  => 'Coinbase Commerce',
     'COINBASE_KEY'              => 'API Key',
+
+    'BTCPAY'                    => 'BTCPay Server',
+    'BTCPAY_URL'                => 'Server URL',
+    'BTCPAY_URL_EXPLAIN'        => 'Example: https://btcpay.yourdomain.com',
+    'BTCPAY_STORE_ID'           => 'Store ID',
+    'BTCPAY_API_KEY'            => 'API Key',
+
+    'COINPAYMENTS'                   => 'CoinPayments (API v2)',
+    'COINPAYMENTS_CLIENT_ID'         => 'Client ID',
+    'COINPAYMENTS_CLIENT_ID_EXPLAIN' => 'Integration Client ID generated in the CoinPayments dashboard.',
+    'COINPAYMENTS_CLIENT_SECRET'     => 'Client Secret',
+    'COINPAYMENTS_CLIENT_SECRET_EXPLAIN' => 'Integration Client Secret used to sign API requests (HMAC-SHA256).',
 ]);

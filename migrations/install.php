@@ -35,7 +35,7 @@ class install extends \phpbb\db\migration\migration
                         'tx_id' => ['INDEX', 'transaction_id'],
                     ],
                 ],
-                $this->table_prefix . 'eunaumtenhoid_payments_intents' => [
+                $this->table_prefix . 'payments_intents' => [
                     'COLUMNS' => [
                         'intent_id'          => ['VCHAR:64', ''],
                         'amount'             => ['INT:11', 0],
@@ -64,7 +64,7 @@ class install extends \phpbb\db\migration\migration
         return [
             'drop_tables' => [
                 $this->table_prefix . 'payments_transactions',
-                $this->table_prefix . 'eunaumtenhoid_payments_intents',
+                $this->table_prefix . 'payments_intents',
             ],
         ];
     }

@@ -1,169 +1,5 @@
 <!-- INCLUDE overall_header.html -->
-
-<style>
-/* CSS Moderno com Cores Nativas do Prosilver */
-.checkout-container {
-    max-width: 550px;
-    margin: 30px auto;
-    background: #f9f9f9; /* Padrão bg1 do Prosilver */
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-}
-
-/* Barra de Passos (Progress Bar) */
-.checkout-steps {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px;
-    background: #f0f0f0; /* Padrão bg2 do Prosilver */
-    border-bottom: 1px solid #cccccc;
-    position: relative;
-}
-
-.checkout-steps::before {
-    content: '';
-    position: absolute;
-    top: 35px;
-    left: 45px;
-    right: 45px;
-    height: 3px;
-    background: #cccccc;
-    z-index: 1;
-}
-
-.step-item {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.step-circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 3px solid #cccccc;
-    color: #666666;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-.step-item.active .step-circle {
-    border-color: #12A3EB; /* Azul do Prosilver */
-    background: #12A3EB;
-    color: #fff;
-}
-
-.step-item.completed .step-circle {
-    border-color: #228822; /* Verde de sucesso nativo */
-    background: #228822;
-    color: #fff;
-}
-
-.step-label {
-    font-size: 11px;
-    font-weight: bold;
-    color: #666666;
-    text-transform: uppercase;
-}
-
-.step-item.active .step-label {
-    color: #12A3EB;
-}
-
-.checkout-header {
-    padding: 25px 20px 15px;
-    text-align: center;
-}
-
-.checkout-amount {
-    font-size: 36px;
-    font-weight: 800;
-    color: #333333;
-    margin: 0;
-    line-height: 1;
-}
-
-.checkout-desc {
-    color: #666666;
-    font-size: 15px;
-    margin-top: 8px;
-}
-
-.checkout-body {
-    padding: 0 25px 25px;
-}
-
-.checkout-title {
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #666666;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* Opções de Gateways */
-.gateway-option {
-    display: flex;
-    align-items: center;
-    padding: 18px 15px;
-    border: 2px solid #cccccc;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: #ffffff;
-}
-
-.gateway-option:hover {
-    border-color: #12A3EB;
-    background: #f4faff;
-}
-
-.gateway-option input[type="radio"] {
-    margin-right: 15px;
-    cursor: pointer;
-}
-
-.gateway-icon {
-    font-size: 28px;
-    margin-right: 15px;
-    width: 35px;
-    text-align: center;
-}
-
-.gateway-name {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333333;
-    display: block;
-}
-
-.gateway-sub {
-    font-size: 12px;
-    color: #666666;
-    display: block;
-    margin-top: 3px;
-}
-
-.checkout-secure {
-    text-align: center;
-    font-size: 11px;
-    color: #666666;
-    margin-top: 18px;
-}
-</style>
+<!-- INCLUDECSS @eunaumtenhoid_payments/payments.css -->
 
 <div class="checkout-container">
     <!-- Barra de Passos -->
@@ -174,16 +10,16 @@
         </div>
         <div class="step-item active">
             <div class="step-circle">2</div>
-            <div class="step-label">Pagamento</div>
+            <div class="step-label">{L_PAYMENTS_STEP_PAYMENT}</div>
         </div>
         <div class="step-item">
             <div class="step-circle">3</div>
-            <div class="step-label">Conclusão</div>
+            <div class="step-label">{L_PAYMENTS_STEP_CONCLUSION}</div>
         </div>
     </div>
 
     <div class="checkout-header">
-        <p class="checkout-desc" style="margin-bottom: 8px;">Total a pagar</p>
+        <p class="checkout-desc" style="margin-bottom: 8px;">{L_PAYMENTS_TOTAL_TO_PAY}</p>
         <h1 class="checkout-amount">{INTENT_CURRENCY} {INTENT_AMOUNT}</h1>
         <p class="checkout-desc"><strong>{INTENT_DESCRIPTION}</strong></p>
         <!-- IF INTENT_REWARD_INFO -->
@@ -196,13 +32,13 @@
     <div class="checkout-body">
         <!-- IF CHECKOUT_ERROR -->
             <div class="errorbox" style="margin-bottom: 15px;">
-                <p><strong>Erro:</strong> {CHECKOUT_ERROR}</p>
+                <p><strong>{L_ERROR}{L_COLON}</strong> {CHECKOUT_ERROR}</p>
             </div>
         <!-- ENDIF -->
 
         <form method="post" action="{U_ACTION}">
             <!-- IF HAS_GATEWAYS -->
-                <div class="checkout-title">Escolha a forma de pagamento</div>
+                <div class="checkout-title">{L_PAYMENTS_CHOOSE_METHOD}</div>
                 
                 <!-- BEGIN gateways -->
                 <label class="gateway-option">
@@ -225,35 +61,143 @@
                     <div>
                         <span class="gateway-name">{gateways.NAME}</span>
                         <!-- IF gateways.ID == 'stripe' -->
-                            <span class="gateway-sub">Cartões de Crédito (Visa, Master, etc)</span>
+                            <span class="gateway-sub">{L_PAYMENTS_SUB_STRIPE}</span>
                         <!-- ELSEIF gateways.ID == 'mercadopago' -->
-                            <span class="gateway-sub">Pague com Pix, Boleto ou Cartão</span>
+                            <span class="gateway-sub">{L_PAYMENTS_SUB_MERCADOPAGO}</span>
                         <!-- ELSEIF gateways.ID == 'paypal' -->
-                            <span class="gateway-sub">Pague com segurança via PayPal</span>
+                            <span class="gateway-sub">{L_PAYMENTS_SUB_PAYPAL}</span>
                         <!-- ELSEIF gateways.ID == 'btcpay' or gateways.ID == 'coinpayments' -->
-                            <span class="gateway-sub">Bitcoin e Altcoins processado via Cripto</span>
+                            <span class="gateway-sub">{L_PAYMENTS_SUB_CRYPTO}</span>
                         <!-- ELSE -->
-                            <span class="gateway-sub">Processamento seguro criptografado</span>
+                            <span class="gateway-sub">{L_PAYMENTS_SUB_DEFAULT}</span>
                         <!-- ENDIF -->
                     </div>
                 </label>
                 <!-- END gateways -->
 
                 <fieldset class="submit-buttons" style="margin-top: 15px; text-align: center;">
-                    <input type="submit" name="submit" value="Finalizar Pagamento" class="button1" style="font-size: 16px; padding: 10px 30px; text-transform: uppercase; width: 100%; border-radius: 6px;" />
+                    <input type="submit" name="submit" value="{L_PAYMENTS_FINAL_SUBMIT}" class="button1" style="font-size: 16px; padding: 10px 30px; text-transform: uppercase; width: 100%; border-radius: 6px;" />
                 </fieldset>
                 
                 <div class="checkout-secure">
-                    🔒 Ambiente 100% Seguro e Criptografado
+                    🔒 {L_PAYMENTS_SECURE_ENV}
                 </div>
             <!-- ELSE -->
                 <div class="errorbox">
-                    <p>Nenhuma forma de pagamento está disponível no momento.</p>
+                    <p>{L_PAYMENTS_NO_GATEWAYS}</p>
                 </div>
             <!-- ENDIF -->
             {S_FORM_TOKEN}
         </form>
     </div>
 </div>
+
+<!-- Modal de Checkout Embutido (Ex: CoinPayments) -->
+<div id="payments-checkout-modal" class="payments-modal-overlay<!-- IF S_SHOW_MODAL --> active<!-- ENDIF -->" role="dialog" aria-modal="true" aria-labelledby="payments-modal-title">
+    <div class="payments-modal-dialog">
+        <div class="payments-modal-header">
+            <div class="payments-modal-title" id="payments-modal-title">
+                <i class="icon fa-btc fa-fw" aria-hidden="true" style="color: #F7931A;"></i>
+                <span>{L_PAYMENTS_MODAL_CRYPTO_TITLE}</span>
+            </div>
+            <button type="button" class="payments-modal-close" id="payments-modal-close-btn" aria-label="{L_PAYMENTS_MODAL_CLOSE}">&times;</button>
+        </div>
+        <div class="payments-modal-notice">
+            <p>{L_PAYMENTS_MODAL_CRYPTO_NOTICE}</p>
+        </div>
+        <div class="payments-modal-body">
+            <iframe id="payments-modal-iframe" 
+                    src="<!-- IF MODAL_CHECKOUT_URL -->{MODAL_CHECKOUT_URL}<!-- ENDIF -->" 
+                    class="payments-checkout-iframe" 
+                    allow="clipboard-read; clipboard-write; payment; camera; accelerometer; gyroscope"></iframe>
+        </div>
+        <div class="payments-modal-footer">
+            <a href="<!-- IF MODAL_CHECKOUT_URL -->{MODAL_CHECKOUT_URL}<!-- ELSE -->#<!-- ENDIF -->" target="_blank" rel="noopener noreferrer" class="payments-modal-link" id="payments-modal-newtab">
+                <i class="icon fa-external-link fa-fw"></i> {L_PAYMENTS_MODAL_OPEN_TAB}
+            </a>
+            <div class="payments-modal-actions">
+                <button type="button" class="button2 payments-modal-btn-cancel">{L_PAYMENTS_MODAL_CLOSE}</button>
+                <a href="<!-- IF MODAL_RETURN_URL -->{MODAL_RETURN_URL}<!-- ELSE -->#<!-- ENDIF -->" class="button1 payments-modal-btn-done" id="payments-modal-btn-done">
+                    <i class="icon fa-check fa-fw"></i> {L_PAYMENTS_MODAL_DONE}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function($) {
+    'use strict';
+    $(document).ready(function() {
+        var $modal = $('#payments-checkout-modal');
+        var $iframe = $('#payments-modal-iframe');
+        var $newtab = $('#payments-modal-newtab');
+        var $btnDone = $('#payments-modal-btn-done');
+        var $form = $('form[action="{U_ACTION}"]');
+        var $submitBtn = $form.find('input[type="submit"]');
+
+        function openModal(checkoutUrl, returnUrl) {
+            $iframe.attr('src', checkoutUrl);
+            $newtab.attr('href', checkoutUrl);
+            $btnDone.attr('href', returnUrl);
+            $modal.addClass('active');
+            $('body').css('overflow', 'hidden');
+        }
+
+        function closeModal() {
+            $modal.removeClass('active');
+            $iframe.attr('src', '');
+            $('body').css('overflow', '');
+        }
+
+        $(document).on('click', '#payments-modal-close-btn, .payments-modal-close, .payments-modal-btn-cancel', function(e) {
+            e.preventDefault();
+            closeModal();
+        });
+
+        $(document).on('click', '#payments-checkout-modal', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        $(document).on('keyup', function(e) {
+            if (e.key === 'Escape' && $modal.hasClass('active')) {
+                closeModal();
+            }
+        });
+
+        $form.on('submit', function(e) {
+            var selectedGateway = $form.find('input[name="gateway"]:checked').val();
+            if (selectedGateway === 'coinpayments') {
+                e.preventDefault();
+                var origBtnVal = $submitBtn.val();
+                $submitBtn.prop('disabled', true).val('{LA_PAYMENTS_PROCESSING}');
+
+                $.ajax({
+                    url: '{U_ACTION}',
+                    type: 'POST',
+                    data: $form.serialize() + '&submit=1',
+                    dataType: 'json',
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                }).done(function(res) {
+                    $submitBtn.prop('disabled', false).val(origBtnVal);
+                    if (res && res.success && res.modal && res.url) {
+                        openModal(res.url, res.return_url);
+                    } else if (res && res.success && res.url) {
+                        window.location.href = res.url;
+                    } else {
+                        alert((res && res.error) ? res.error : '{LA_PAYMENTS_ERROR_NO_URL}');
+                    }
+                }).fail(function() {
+                    $submitBtn.prop('disabled', false).val(origBtnVal);
+                    // Fallback para envio tradicional caso AJAX falhe
+                    $form.off('submit').submit();
+                });
+            }
+        });
+    });
+})(jQuery);
+</script>
 
 <!-- INCLUDE overall_footer.html -->

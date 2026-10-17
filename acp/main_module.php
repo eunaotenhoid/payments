@@ -51,9 +51,8 @@ class main_module
             $config->set('eunaumtenhoid_payments_btcpay_api_key', $request->variable('btcpay_api_key', ''));
 
             $config->set('eunaumtenhoid_payments_coinpayments_enabled', $request->variable('coinpayments_enabled', 0));
-            $config->set('eunaumtenhoid_payments_coinpayments_pub_key', $request->variable('coinpayments_pub_key', ''));
-            $config->set('eunaumtenhoid_payments_coinpayments_priv_key', $request->variable('coinpayments_priv_key', ''));
-            $config->set('eunaumtenhoid_payments_coinpayments_default_coin', $request->variable('coinpayments_default_coin', 'BTC'));
+            $config->set('eunaumtenhoid_payments_coinpayments_client_id', $request->variable('coinpayments_client_id', ''));
+            $config->set('eunaumtenhoid_payments_coinpayments_client_secret', $request->variable('coinpayments_client_secret', ''));
 
             trigger_error($user->lang('ACP_EUNAUMTENHOID_PAYMENTS_SAVED_SUCCESSFULLY') . adm_back_link($this->u_action));
         }
@@ -79,10 +78,9 @@ class main_module
             'BTCPAY_STORE_ID'     => $config['eunaumtenhoid_payments_btcpay_store_id'] ?? '',
             'BTCPAY_API_KEY'      => $config['eunaumtenhoid_payments_btcpay_api_key'] ?? '',
             
-            'COINPAYMENTS_ENABLED'      => $config['eunaumtenhoid_payments_coinpayments_enabled'] ?? 0,
-            'COINPAYMENTS_PUB_KEY'      => $config['eunaumtenhoid_payments_coinpayments_pub_key'] ?? '',
-            'COINPAYMENTS_PRIV_KEY'     => $config['eunaumtenhoid_payments_coinpayments_priv_key'] ?? '',
-            'COINPAYMENTS_DEFAULT_COIN' => $config['eunaumtenhoid_payments_coinpayments_default_coin'] ?? 'BTC',
+            'COINPAYMENTS_ENABLED'       => $config['eunaumtenhoid_payments_coinpayments_enabled'] ?? 0,
+            'COINPAYMENTS_CLIENT_ID'     => !empty($config['eunaumtenhoid_payments_coinpayments_client_id']) ? $config['eunaumtenhoid_payments_coinpayments_client_id'] : ($config['eunaumtenhoid_payments_coinpayments_pub_key'] ?? ''),
+            'COINPAYMENTS_CLIENT_SECRET' => !empty($config['eunaumtenhoid_payments_coinpayments_client_secret']) ? $config['eunaumtenhoid_payments_coinpayments_client_secret'] : ($config['eunaumtenhoid_payments_coinpayments_priv_key'] ?? ''),
 
             'U_ACTION'            => $this->u_action,
         ]);
